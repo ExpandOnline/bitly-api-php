@@ -1,5 +1,5 @@
 {
-    "name": "bitly/bitly-api-php",
+    "name": "ExpandOnline/bitly-api-php",
     "type": "library",
     "description": "PHP client for the Bitly API",
     "keywords": ["bitly", "api"],
