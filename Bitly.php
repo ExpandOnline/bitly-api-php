@@ -156,7 +156,7 @@ class Bitly
      *
      * @see http://dev.bitly.com/authentication.html
      */
-    public function getAccessToken($code, $redirectUri)
+    public function getAccessTokenData($code, $redirectUri)
     {
         $params = array('code' => $code, 'redirect_uri' => $redirectUri,
                         'client_id' => $this->clientId,
@@ -165,7 +165,22 @@ class Bitly
         $data = array();
         parse_str($result, $data);
         $this->accessToken = $data['access_token'];
-        return $data['access_token'];
+        return $data;
+    }
+
+    /**
+     * Get URL to authorize an application.
+     *
+     * @param $redirectUri
+     *
+     * @return string
+     */
+    public function getAuthenticationUrl($redirectUri) {
+        $params = array(
+            'client_id' => $this->clientId,
+            'redirect_uri' => $redirectUri
+        );
+        return 'https://bitly.com/oauth/authorize' . '?' . build_query($params);
     }
 
     /**
